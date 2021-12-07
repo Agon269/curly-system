@@ -57,6 +57,7 @@ ul li {
   justify-content: space-between;
   margin-left: 150px;
   margin-top: 20px;
+  overflow: hidden;
   /* align-items: center; */
 }
 

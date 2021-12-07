@@ -68,6 +68,7 @@
         let src = imgArr[i].download_url;
         var img = new Image();
             img.src = src;
+            img.crossOrigin="anonymous"
             img.addEventListener('click',onImageSelect);
         
         document.getElementById('images').appendChild(img);
@@ -78,9 +79,10 @@ loadImages();
 //==================================================
 
 function onImageSelect (event){
-  
     let image =event.currentTarget.src ;
     var canvas = new fabric.Canvas('c');
+    var context = canvas.getContext('2d');
+   context.clearRect(0, 0, canvas.width, canvas.height);
 
     var imgElement = event.currentTarget.src ;
 
