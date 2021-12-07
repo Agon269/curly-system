@@ -68,7 +68,7 @@
         let src = imgArr[i].download_url;
         var img = new Image();
             img.src = src;
-            img.crossOrigin="anonymous"
+            img.setAttribute('crossorigin', '*');
             img.addEventListener('click',onImageSelect);
         
         document.getElementById('images').appendChild(img);
