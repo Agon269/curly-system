@@ -66,7 +66,7 @@
 
     //========== background colo challenge
     let def = 80;
-    var canvas =  new fabric.Canvas('c');
+    let canvas =  new fabric.Canvas('c');
 
     var textEditable = new fabric.Textbox(
             'Default Text', {
@@ -101,8 +101,17 @@ window.addEventListener('load', () => {
 }); // end onload
 
 function clearCanvas(){
-  var canvas =  new fabric.Canvas('c');
-  canvas.set("")
+ 
+   canvas.clear()
+var context = canvas.getContext('2d');
+   context.clearRect(0, 0, canvas.width, canvas.height);
+   var text = new fabric.Textbox('Default Text', {  width: 500,
+            editable: true,
+            left: 100,
+        top: 100,
+        fontSize:def });
+canvas.add(text);
+
 }
 //==================================
 

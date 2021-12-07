@@ -4,20 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style3.css">
     <title>Task 2</title>
 </head>
 <body>
-    <button onclick="download_image()">
-        Download
+    <div class="nav">
+        <button onclick="download_image()">
+            Download
         </button>
+    </div>
+    
+    
+    
+    <div class="sidenav">
+        <ul class="menu">
+            <li>Elements</li>
+            <li class="active"><a href="#">image</a></li>
+            <li ><a href="./text.html">text</a></li>
+            <li ><a href="./index.html" >background</a></li>
+            
+        </ul>
+    </div>
+    
+      
+
+
+
     <div class="board">
     <div id="images">
       
     </div>
 
     <!-- overflow hidden -->
-          <canvas id="c" width="800" height="600"></canvas>
+    <div class="art">
+        <div class="header">
+       
+        <button onclick="clearCanvas()">
+          Delete
+      </button>
+      </div>
+      <canvas id="c" width="800" height="600"></canvas>
     </div>
    
 </body>
