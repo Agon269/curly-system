@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles2.css">
+    <title>Task 2</title>
+</head>
+<body>
+  <div class="nav">
+    <button onclick="download_image()">
+        Download
+    </button>
+</div>
+
+
+
+<div class="sidenav">
+    <ul class="menu">
+        <li>Elements</li>
+        <li><a href="./image.html">image</a></li>
+        <li class="active"><a href="#">text</a></li>
+        <li ><a href="./index.html" >background</a></li>
+        
+    </ul>
+</div>
+
+  
+
+    <div class="board">
+<!-- text challenge -->
+        <div class="text-types">
+            <h1 onclick="changeFontSize(80)">Add a heading</h1>
+            <h4 onclick="changeFontSize(60)">Add a subheading</h4>
+            <p onclick="changeFontSize(40)">Add a little bit of body text</p>
+        </div>
+   
+        <div class="art">
+            <div class="header">
+              <form>
+              <label>
+                size:
+                <select name="age" id="selectSize"onChange="changeFontSize(this.options[this.selectedIndex].value)"></select>
+              </label>
+            </form>
+            <button onclick="clearCanvas()">
+              Delete
+          </button>
+          </div>
+          <canvas id="c" width="800" height="600"></canvas>
+        </div>
+        
+        
+    <!-- overflow hidden -->
+    </div>
+   
+</body>
+
+
+<script src="./script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/460/fabric.min.js" integrity="sha512-ybPp3kCrNQXdvTfh99YLIdnajWnQvHuEKDJ+b26mxI9w+pLhnBo3HmNLJ1pEUBFO1Q0bfJxApeqecNbmaV763g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+
+<script>
+
+    //========== background colo challenge
+    let def = 80;
+    var canvas =  new fabric.Canvas('c');
+
+    var textEditable = new fabric.Textbox(
+            'Default Text', {
+            width: 500,
+            editable: true,
+            left: 100,
+        top: 100,
+        fontSize:def
+        });
+
+
+    function changeFontSize(size){
+        textEditable.set({fontSize:size})
+        canvas.renderAll();
+       
+  }
+
+  canvas.add(textEditable);
+
+canvas.centerObjectH(textEditable);
+//========input
+
+var selectSize = document.getElementById("selectSize");
+// use addEventlistener or you will overwrite other 'onload' events
+
+window.addEventListener('load', () => {
+  for(let i = 1; i<=100 ; i++){
+    let option = document.createElement('option');
+        option.innerText = i;
+    selectSize.appendChild( option );
+  }
+}); // end onload
+
+function clearCanvas(){
+  var canvas =  new fabric.Canvas('c');
+  canvas.set("")
+}
+//==================================
+
+function download_image(){
+  var canvas = document.getElementById("c");
+  image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  var link = document.createElement('a');
+  link.download = "my-image.png";
+  link.href = image;
+  link.click();
+}
+</script>
+</html>
